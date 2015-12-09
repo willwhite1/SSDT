@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AdventureWorks", "Database\AdventureWorks.sqlproj", "{C798127B-D062-4778-90EA-4521913AA5FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deploy", "Deploy\Deploy.csproj", "{EE35A591-E841-4ACB-A65C-E828C23F82ED}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C798127B-D062-4778-90EA-4521913AA5FB} = {C798127B-D062-4778-90EA-4521913AA5FB}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C798127B-D062-4778-90EA-4521913AA5FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C798127B-D062-4778-90EA-4521913AA5FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C798127B-D062-4778-90EA-4521913AA5FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C798127B-D062-4778-90EA-4521913AA5FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C798127B-D062-4778-90EA-4521913AA5FB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EE35A591-E841-4ACB-A65C-E828C23F82ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE35A591-E841-4ACB-A65C-E828C23F82ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE35A591-E841-4ACB-A65C-E828C23F82ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE35A591-E841-4ACB-A65C-E828C23F82ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
