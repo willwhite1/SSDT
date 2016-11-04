@@ -2,7 +2,7 @@
 
 require 'albacore'
 
- msbuild :build do |b|
+ build :build do |b|
      b.properties = { :configuration => :Debug }
      b.targets = [ :Build ]
      b.solution = "AdventureWorks.sln"
