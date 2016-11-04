@@ -1,9 +1,9 @@
 version: 0.0
 os: windows
 files:
-  - source: \index.html
-    destination: C:\inetpub\wwwroot
+  - source: \Database\bin\Debug\AdventureWorks.dacpac
+    destination: C:\Builds\AdventureWorks
 hooks:
-  BeforeInstall:
-    - location: \before-install.bat
+  AfterInstall:
+    - location: \install.bat
       timeout: 900
