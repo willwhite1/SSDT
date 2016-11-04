@@ -12,5 +12,6 @@ Post-Deployment Script Template
 
 DELETE FROM Person.CountryRegion
 
-BULK INSERT Person.CountryRegion
+/*BULK INSERT Person.CountryRegion
 FROM '$(DataFiles)\Person.CountryRegion.dat' WITH(DATAFILETYPE='widenative')
+*/
