@@ -1,7 +1,7 @@
 require 'albacore'
-
 build :msbuild do |b|
   b.properties = { :configuration => :Debug }
-  b.targets = [ :Build ]
-  b.solution = "AdventureWorks.sln"
+  b.target = [ 'Clean', 'Build' ]
+  b.file = "AdventureWorks.sln"
+  b.logging = 'detailed'
 end
