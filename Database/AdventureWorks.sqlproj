@@ -79,6 +79,6 @@
     </SqlCmdVariable>
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>bcp AdventureWorks.Person.CountryRegion out "$(TargetDir)Person.CountryRegion.dat" -N -T -q -E</PostBuildEvent>
+    <!--<PostBuildEvent>bcp AdventureWorks.Person.CountryRegion out "$(TargetDir)Person.CountryRegion.dat" -N -T -q -E</PostBuildEvent>-->
   </PropertyGroup>
 </Project>
