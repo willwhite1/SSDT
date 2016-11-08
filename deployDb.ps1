@@ -20,3 +20,5 @@ if (!(Test-Path $Dacpac))
 "VERBOSE: About to execute deployment..." | Add-Content -Path "C:\Builds\Logs\$($SQLInstance)-$($TargetDBName).log"
 & $sqlPackagePath "/Action:Publish" "/SourceFile:`"$($Dacpac)`"" "/TargetServerName:$($SQLInstance)" "/TargetDatabaseName:$($TargetDBName)"
 "VERBOSE: Deployment complete..." | Add-Content -Path "C:\Builds\Logs\$($SQLInstance)-$($TargetDBName).log"
+
+exit $LASTEXITCODE
