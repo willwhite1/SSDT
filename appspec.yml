@@ -5,7 +5,7 @@ files:
     destination: C:\Builds\AdventureWorks
   - source: \install.bat
     destination: C:\Builds\AdventureWorks
-  - source: \dbDeploy.ps1
+  - source: \deployDb.ps1
     destination: C:\Builds\AdventureWorks
 hooks:
   AfterInstall:
