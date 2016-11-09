@@ -17,8 +17,33 @@ if (!(Test-Path $Dacpac))
 }
 
 # run the command
+$Arguments = @()
+$Arguments += "/Action:Publish"
+$Arguments += "/SourceFile:`"$($DacPac)`""
+$Arguments += "/TargetServerName:$($SQLInstance)"
+$Arguments += "/TargetDatabaseName:$($TargetDBName)"
+$Arguments += "/p:IncludeCompositeObjects=True"
+$Arguments += "/v:DataFiles=C:\something"
+$tempErrorFile = [System.IO.Path]::GetTempFileName()
+$tempStdFile = [System.IO.Path]::GetTempFileName()
+$proc = Start-Process -File $SqlPackagePath -Wait -ArgumentList $Arguments -NoNewWindow -PassThru `
+		-RedirectStandardError $tempErrorFile -RedirectStandardOutput $tempStdFile
+if (Test-Path $tempStdFile)
+{
+	Get-Content -Path $tempStdFile | Out-String | Write-Verbose -Verbose
+}
+if ($proc.ExitCode -ne 0)
+{
+	if (Test-Path $tempErrorFile)
+	{
+		Get-Content -Path $tempErrorFile | Out-String | Write-Verbose -Verbose
+	}
+	Write-Error "`tsqlpackage exited with code '$($proc.ExitCode)' while trying to publish dacpac changes"
+	exit $proc.ExitCode
+}		
+		
 "VERBOSE: About to execute deployment..." | Add-Content -Path "C:\Builds\Logs\$($SQLInstance)-$($TargetDBName).log"
-& $sqlPackagePath "/Action:Publish" "/SourceFile:`"$($Dacpac)`"" "/TargetServerName:$($SQLInstance)" "/TargetDatabaseName:$($TargetDBName)" "/v:DataFiles=C:\Builds"
+#& $sqlPackagePath "/Action:Publish" "/SourceFile:`"$($Dacpac)`"" "/TargetServerName:$($SQLInstance)" "/TargetDatabaseName:$($TargetDBName)" "/v:DataFiles=C:\Builds"
 "VERBOSE: Deployment complete..." | Add-Content -Path "C:\Builds\Logs\$($SQLInstance)-$($TargetDBName).log"
 
 exit $LASTEXITCODE
